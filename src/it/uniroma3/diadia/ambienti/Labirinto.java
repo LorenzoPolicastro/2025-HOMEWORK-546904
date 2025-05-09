@@ -1,6 +1,6 @@
 package it.uniroma3.diadia.ambienti;
 
-import it.uniroma3.diadia.*; 
+import it.uniroma3.diadia.IO; 
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 /**
@@ -17,12 +17,12 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class Labirinto {
 	private Stanza stanzaIniziale;
 	private Stanza stanzaVincente;
-	private IOConsole io;
+	private IO io;
 	
 	/**
      * Costruttore del labirinto - crea il labirinto con stanze e collegamenti
      */
-    public Labirinto(IOConsole io) {
+    public Labirinto(IO io) {
     	this.io = io;
         creaLabirinto();
     }
@@ -31,13 +31,15 @@ public class Labirinto {
     	/* crea gli attrezzi */
     	Attrezzo lanterna = new Attrezzo("lanterna",3);
 		Attrezzo osso = new Attrezzo("osso",1);
+		Attrezzo chiave = new Attrezzo("chiave",1);
     	
 		/* crea stanze del labirinto */
-		Stanza atrio = new Stanza("Atrio");
+		Stanza atrio = new StanzaBloccata("Atrio", "nord", "chiave");
 		Stanza aulaN11 = new Stanza("Aula N11");
 		Stanza aulaN10 = new Stanza("Aula N10");
 		Stanza laboratorio = new Stanza("Laboratorio Campus");
 		Stanza biblioteca = new Stanza("Biblioteca");
+		Stanza aulaN12 = new StanzaBuia("Aula N12", "lanterna");
 		
 		/* collega le stanze */
 		atrio.impostaStanzaAdiacente("nord", biblioteca);
@@ -46,9 +48,11 @@ public class Labirinto {
 		atrio.impostaStanzaAdiacente("ovest", laboratorio);
 		aulaN11.impostaStanzaAdiacente("est", laboratorio);
 		aulaN11.impostaStanzaAdiacente("ovest", atrio);
+		aulaN11.impostaStanzaAdiacente("sud", aulaN12);
 		aulaN10.impostaStanzaAdiacente("nord", atrio);
 		aulaN10.impostaStanzaAdiacente("est", aulaN11);
 		aulaN10.impostaStanzaAdiacente("ovest", laboratorio);
+		aulaN12.impostaStanzaAdiacente("nord", aulaN11);
 		laboratorio.impostaStanzaAdiacente("est", atrio);
 		laboratorio.impostaStanzaAdiacente("ovest", aulaN11);
 		biblioteca.impostaStanzaAdiacente("sud", atrio);
@@ -56,6 +60,7 @@ public class Labirinto {
         /* pone gli attrezzi nelle stanze */
 		aulaN10.addAttrezzo(lanterna);
 		atrio.addAttrezzo(osso);
+		aulaN12.addAttrezzo(chiave);
 
 		// il gioco comincia nell'atrio
         stanzaIniziale = atrio;  

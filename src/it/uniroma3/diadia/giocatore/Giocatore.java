@@ -16,9 +16,9 @@ import it.uniroma3.diadia.attrezzi.Attrezzo;
 public class Giocatore {
 	private int cfu;
     private Borsa borsa;
-    private IOConsole io;
+    private IO io;
     
-    public Giocatore(int cfuIniziali, int pesoMaxBorsa, IOConsole io) {
+    public Giocatore(int cfuIniziali, int pesoMaxBorsa, IO io) {
     	this.io = io;
     	this.cfu = cfuIniziali;
     	this.borsa = new Borsa(pesoMaxBorsa, io);

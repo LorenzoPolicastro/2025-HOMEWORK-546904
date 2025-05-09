@@ -4,6 +4,6 @@
 /**
  * 
  */
-module HOMEWORKA_2025_Policastro {
+module Collezioni {
 	requires org.junit.jupiter.api;
 }

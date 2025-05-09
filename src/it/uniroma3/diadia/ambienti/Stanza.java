@@ -87,7 +87,7 @@ public class Stanza {
      * @return la descrizione della stanza
      */
     public String getDescrizione() {
-        return this.toStringVersione2();
+        return this.toString();
     }
 
     /**
@@ -114,25 +114,6 @@ public class Stanza {
         }
     }
 
-   /**
-	* Restituisce una rappresentazione stringa di questa stanza,
-	* stampadone la descrizione, le uscite e gli eventuali attrezzi contenuti
-	* @return la rappresentazione stringa
-	*/
-    public String toString() {
-    	StringBuilder risultato = new StringBuilder();
-    	risultato.append(this.nome);
-    	risultato.append("\nUscite: ");
-    	for (String direzione : this.direzioni)
-    		if (direzione!=null)
-    			risultato.append(" " + direzione);
-    	risultato.append("\nAttrezzi nella stanza: ");
-    	for (Attrezzo attrezzo : this.attrezzi) {
-    		risultato.append(attrezzo.toString()+" ");
-    	}
-    	return risultato.toString();
-    }
-    
     /**
 	* Restituisce una rappresentazione stringa di questa stanza,
 	* stampadone la descrizione, le uscite e gli eventuali attrezzi contenuti
@@ -141,7 +122,7 @@ public class Stanza {
 	* ovvero, non sia stato inserito il numero massimo di oggetti Attrezzo.
 	* @return la rappresentazione stringa
 	*/
-    public String toStringVersione2() {
+    public String toString() {
     	StringBuilder risultato = new StringBuilder();
     	risultato.append(this.nome);
     	risultato.append("\nUscite: ");
@@ -162,29 +143,13 @@ public class Stanza {
     	return risultato.toString();
     }
 
-    /**
-	* Controlla se un attrezzo esiste nella stanza (uguaglianza sul nome).
-	* @return true se l'attrezzo esiste nella stanza, false altrimenti.
-	*/
-	public boolean hasAttrezzo(String nomeAttrezzo) {
-		boolean trovato;
-		trovato = false;
-		for (Attrezzo attrezzo : this.attrezzi) {
-			if (attrezzo.getNome().equals(nomeAttrezzo))
-				trovato = true;
-		}
-		return trovato;
-	}
-	
 	/**
 	* Controlla se un attrezzo esiste nella stanza (uguaglianza sul nome).
 	* Questo metodo è una variante dell'originale metodo hasAttrezzo, che tuttavia ammette che la stanza che lo richiama abbia una collezione
 	* di attrezzi non completamente piena di oggetti Attrezzo. 
-	* Il metodo originale "hasAttrezzo" genera un errore nel caso in cui un elemento della collezione attrezzi della stanza sia impostato con valore null,
-	* ovvero, non sia stato inserito il numero massimo di oggetti Attrezzo.
 	* @return true se l'attrezzo esiste nella stanza, false altrimenti.
 	*/
-	public boolean hasAttrezzoVersione2(String nomeAttrezzo) {
+	public boolean hasAttrezzo(String nomeAttrezzo) {
 
 		for (int i = 0; i < this.numeroAttrezzi; i++) {
 			Attrezzo attrezzo = this.attrezzi[i];
@@ -201,7 +166,7 @@ public class Stanza {
 	 * @return l'attrezzo presente nella stanza.
      * 		   null se l'attrezzo non e' presente.
 	 */
-	public Attrezzo getAttrezzo(String nomeAttrezzo) {
+	 /*public Attrezzo getAttrezzo(String nomeAttrezzo) {
 		Attrezzo attrezzoCercato;
 		attrezzoCercato = null;
 		for (Attrezzo attrezzo : this.attrezzi) {
@@ -210,7 +175,7 @@ public class Stanza {
 		}
 		return attrezzoCercato;	
 	}
-	
+	*/
 	/**
      * Restituisce l'attrezzo nomeAttrezzo se presente nella stanza.
 	 * Il metodo originale "hasAttrezzo" genera un errore nel caso in cui un elemento della collezione attrezzi della stanza sia impostato con valore null,
@@ -219,7 +184,7 @@ public class Stanza {
 	 * @return l'attrezzo presente nella stanza.
      * 		   null se l'attrezzo non e' presente.
 	 */
-	public Attrezzo getAttrezzoVersione2(String nomeAttrezzo) {
+	public Attrezzo getAttrezzo(String nomeAttrezzo) {
 	    if (nomeAttrezzo == null) {
 	    	return null;  // Gestione input nullo
 	    }

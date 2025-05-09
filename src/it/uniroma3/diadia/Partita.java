@@ -18,7 +18,7 @@ public class Partita {
 	//queste due variabili appartengono solo a questa classe e non possono essere modificate
 	static final private int CFU_INIZIALI = 20;
 	static final private int PESO_MASSIMO_BORSA = 10;
-	private IOConsole io;
+	private IO io;
 	
 	private Labirinto labirinto;
 	private Giocatore giocatore;
@@ -26,7 +26,7 @@ public class Partita {
 	private boolean finita;
 	private int cfu;
 	
-	public Partita(IOConsole io){
+	public Partita(IO io){
 		this.io = io;
 		this.labirinto = new Labirinto(io);
 		this.giocatore = new Giocatore(CFU_INIZIALI, PESO_MASSIMO_BORSA, io);
