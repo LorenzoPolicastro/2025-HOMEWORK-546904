@@ -4,16 +4,19 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.IO;
+import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
-import it.uniroma3.diadia.giocatore.Giocatore;
 
 class GiocatoreTest {
 	
 	private Giocatore giocatore;
+	private IO io;
 	
 	@BeforeEach
     void setUp() {
-        this.giocatore = new Giocatore(20, 10); // 20 CFU, borsa da 10kg
+		io = new IOConsole(); 
+        giocatore = new Giocatore(20, 10, io); // 20 CFU, borsa da 10kg
     }
 	
 	/*Test sul valore corrente dei CFU del giocatore

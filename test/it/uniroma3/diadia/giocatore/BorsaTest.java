@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
 
+import it.uniroma3.diadia.IO;
+import it.uniroma3.diadia.IOConsole;
 import it.uniroma3.diadia.attrezzi.Attrezzo;
 
 class BorsaTest {
@@ -12,10 +14,12 @@ class BorsaTest {
 	private Borsa borsa;
 	private Attrezzo lanterna;
     private Attrezzo osso;
-	
+    private IO io;
+    
 	@BeforeEach
     void setUp() {
-        this.borsa = new Borsa(); // Capacità 10kg di default
+		io = new IOConsole();
+        this.borsa = new Borsa(10, io); // Capacità 10kg
         this.lanterna = new Attrezzo("lanterna", 3);
         this.osso = new Attrezzo("osso", 1);
     }

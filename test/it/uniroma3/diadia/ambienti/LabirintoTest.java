@@ -1,19 +1,20 @@
 package it.uniroma3.diadia.ambienti;
+import it.uniroma3.diadia.*; 
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.ambienti.Labirinto;
-
 class LabirintoTest {
 	
 	private Labirinto labirinto;
+	private IO io;
 	
 	@BeforeEach
     void setUp() {
-        this.labirinto = new Labirinto();
+		io = new IOConsole();
+        labirinto = new Labirinto(io);
     }
 	
 	/*Test che verifica se la stanza Iniziale sia "Atrio", come definito dal metodo
@@ -59,7 +60,7 @@ class LabirintoTest {
 	void testAttrezzoNellaStanza() {
 		Stanza aulaN10 = labirinto.getStanzaIniziale().getStanzaAdiacente("sud");
         
-        assertTrue(aulaN10.hasAttrezzoVersione2("lanterna"));
+        assertTrue(aulaN10.hasAttrezzo("lanterna"));
 	}
 	
 	/*Test che verifica se in una specifica stanza non sia presente uno specifico attrezzo
@@ -69,7 +70,7 @@ class LabirintoTest {
 	void testAttrezzoAssenteNellaStanza() {
 		Stanza aulaN10 = labirinto.getStanzaIniziale().getStanzaAdiacente("sud");
         
-        assertFalse(aulaN10.hasAttrezzoVersione2("osso"));
+        assertFalse(aulaN10.hasAttrezzo("osso"));
 	}
 	
 }

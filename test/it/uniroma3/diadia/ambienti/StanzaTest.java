@@ -62,6 +62,8 @@ class StanzaTest {
 		assertSame(stanza3, stanza1.getStanzaAdiacente("nord"));
 	}
 	
+
+	
 	/* Test su recupero di un attrezzo in una stanza
 	 */
 	@Test
@@ -78,24 +80,6 @@ class StanzaTest {
 	void testGetAttrezzoAssente() {
 			
 		assertSame(null,stanza1.getAttrezzo("Torcia"));
-	}
-	
-	/* Test su recupero di un attrezzo in una stanza
-	 */
-	@Test
-	void testGetAttrezzoVersione2() {
-		Attrezzo attrezzo1 = new Attrezzo("Torcia", 2);
-		stanza1.addAttrezzo(attrezzo1);
-		
-		assertSame(attrezzo1,stanza1.getAttrezzoVersione2("Torcia"));
-	}
-	
-	/* Test su esistenza di un attrezzo non presente in una stanza
-	 */
-	@Test
-	void testGetAttrezzoAssenteVersione2() {
-			
-		assertSame(null,stanza1.getAttrezzoVersione2("Torcia"));
 	}
 	
 	/* Test su esistenza di un attrezzo in una stanza
@@ -161,7 +145,7 @@ class StanzaTest {
 		
 		stanza1.addAttrezzo(attrezzo1);
 		
-		assertTrue(stanza1.hasAttrezzoVersione2("Torcia"));
+		assertTrue(stanza1.hasAttrezzo("Torcia"));
 	}
 	
 	/* Test su esistenza di un attrezzo in una stanza che contiene più attrezzi richiamando hasAttrezzoVersione2
@@ -174,7 +158,7 @@ class StanzaTest {
 		Attrezzo attrezzo2 = new Attrezzo("Batteria", 1);
 		stanza1.addAttrezzo(attrezzo2);
 		
-		assertTrue(stanza1.hasAttrezzoVersione2("Batteria"));
+		assertTrue(stanza1.hasAttrezzo("Batteria"));
 	}
 	
 	/* Test su assenza di un attrezzo in una stanza richiamando hasAttrezzoVersione2
@@ -184,7 +168,7 @@ class StanzaTest {
 		Attrezzo attrezzo1 = new Attrezzo("Torcia", 2);
 		stanza1.addAttrezzo(attrezzo1);
 		
-		assertFalse(stanza1.hasAttrezzoVersione2("Batteria"));
+		assertFalse(stanza1.hasAttrezzo("Batteria"));
 	}
 	
 	/* Test su assenza di un attrezzo in una stanza con più attrezzi richiamando hasAttrezzoVersione2
@@ -197,7 +181,7 @@ class StanzaTest {
 		Attrezzo attrezzo2 = new Attrezzo("Batteria", 1);
 		stanza1.addAttrezzo(attrezzo2);
 		
-		assertFalse(stanza1.hasAttrezzoVersione2("Telecamera"));
+		assertFalse(stanza1.hasAttrezzo("Telecamera"));
 	}
 	
 	/*

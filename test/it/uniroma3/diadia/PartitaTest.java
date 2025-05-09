@@ -5,18 +5,18 @@ import org.junit.jupiter.api.BeforeEach;
 
 import org.junit.jupiter.api.Test;
 
-import it.uniroma3.diadia.Partita;
-
 class PartitaTest {
 	
 	private Partita partita;
+	private IO io;
 	
 	@BeforeEach
 	void setUpPartita() {
 		/* Le stanze Corrente e Vincente sono precedentemente impostate al momento della definizione
 		 * della Partita tramite il metodo creaStanze
 		 */
-		partita = new Partita();
+		io = new IOConsole();
+		partita = new Partita(io);
 	}
 	
 	/* Test su impostazione della stanza corrente diversa dalla stanza Vincente
@@ -46,12 +46,12 @@ class PartitaTest {
 	/* Test su termine della partita per esaurimenti dei cfu
 	 * Attenzione: questo metodo non fa più parte della classe Partita, è ora responsabilità della classe Giocatore
 	 */
-	@Test
+	/*@Test
 	void testIsFinitaCfuZero() {
 		partita.setCfu(0);
 		assertTrue(partita.isFinita());
 	}
-	
+	*/
 	/* Test su termine della partita perchè vinta
 	 */
 	@Test
